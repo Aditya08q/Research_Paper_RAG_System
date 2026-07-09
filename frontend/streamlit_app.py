@@ -1,18 +1,3 @@
-"""
-Streamlit frontend for Research Paper RAG.
-
-Design choice: this file only handles UI and HTTP calls to the FastAPI
-backend — it contains zero RAG logic itself. That logic already lives in
-app/services/*, so the frontend just becomes another client of the same
-/upload and /chat endpoints a curl command or any other client would use.
-This keeps the "modular, educational" architecture intact instead of
-duplicating pipeline code inside the UI layer.
-
-Run with: streamlit run frontend/streamlit_app.py
-(Requires the FastAPI backend to already be running via:
- uvicorn app.main:app --reload)
-"""
-
 import requests
 import streamlit as st
 
@@ -25,7 +10,7 @@ st.caption("Upload a research paper, then ask questions about it — answers are
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# --- Sidebar: PDF upload -----------------------------------------------------
+#  PDF upload
 with st.sidebar:
     st.header("Upload a paper")
     uploaded_file = st.file_uploader("Choose a PDF", type=["pdf"])
@@ -50,7 +35,7 @@ with st.sidebar:
                     detail = exc.response.text or f"Server returned {exc.response.status_code} with no body — check the uvicorn terminal for a traceback."
                 st.error(f"Upload failed: {detail}")
 
-# --- Main: chat interface ----------------------------------------------------
+# chat interface 
 for entry in st.session_state.chat_history:
     with st.chat_message("user"):
         st.write(entry["question"])
