@@ -1,8 +1,3 @@
-"""
-Chat endpoint — accepts a question and runs the query flow via the RAG
-pipeline, returning an answer grounded in the uploaded papers.
-"""
-
 from fastapi import APIRouter, HTTPException
 
 from app.core.logging import get_logger
