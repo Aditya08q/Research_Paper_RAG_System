@@ -108,7 +108,7 @@ Question → bge-small-en-v1.5 (embed) → ChromaDB (cosine similarity, top_k=5)
 
 ### Project structure
 
-
+```
 app/
 ├── api/            FastAPI route handlers (upload.py, chat.py)
 ├── core/           Config and logging setup
@@ -124,7 +124,7 @@ app/
 data/
 ├── pdfs/           Uploaded PDFs are saved here
 └── chroma_db/      Persistent vector database files
-
+```
 
 ## Error handling
 
