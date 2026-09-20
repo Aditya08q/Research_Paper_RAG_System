@@ -2,7 +2,6 @@ from pydantic import BaseModel, Field
 
 
 class ChatRequest(BaseModel):
-    """Body for POST /chat — a natural-language question about uploaded papers."""
 
     question: str = Field(
         ...,
