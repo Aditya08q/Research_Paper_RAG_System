@@ -1,10 +1,7 @@
 from pydantic_settings import BaseSettings
 from pathlib import Path
 class Settings(BaseSettings):
-    """
-    Typed application settings, loaded from environment variables (or a .env
-    file) with sensible defaults for local development.
-    """
+    
 
     
     base_dir: Path = Path(__file__).resolve().parent.parent.parent
