@@ -1,12 +1,3 @@
-"""
-Application-wide logging configuration.
-
-The spec calls out specific events to log (upload, chunking, embedding,
-retrieval, LLM latency, errors). Rather than each service configuring its
-own logger differently, we set up one consistent format here and have every
-module call `get_logger(__name__)`.
-"""
-
 import logging
 import sys
 
