@@ -8,19 +8,7 @@ logger = get_logger(__name__)
 
 
 def chunk_documents(pages: list[Document]) -> list[Document]:
-    """
-    Split page-level Documents into smaller overlapping chunks.
-
-    Each output chunk keeps the same metadata (source filename, page number)
-    as the page it came from, so a chunk retrieved later can still be traced
-    back to an exact page for citation.
-
-    Args:
-        pages: List of page-level Documents, typically from `pdf_loader.load_pdf`.
-
-    Returns:
-        A list of smaller Document chunks ready for embedding.
-    """
+    
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=settings.chunk_size,
         chunk_overlap=settings.chunk_overlap,
