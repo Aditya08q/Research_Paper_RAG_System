@@ -13,26 +13,10 @@ class PDFLoadError(Exception):
 
 
 def load_pdf(file_path: Path) -> list[Document]:
-    """
-    Extract text from a PDF, one page at a time, and wrap each page in a
-    LangChain Document so metadata (source filename + page number) travels
-    alongside the text through the rest of the pipeline.
-
-    Args:
-        file_path: Path to the PDF file on disk.
-
-    Returns:
-        A list of Document objects, one per non-empty page.
-
-    Raises:
-        PDFLoadError: if the file is corrupted, encrypted, or has no
-            extractable text at all (e.g. a scanned image PDF with no OCR,
-            which this project intentionally does not support per the
-            `ocr: false` constraint).
-    """
+    
     try:
         doc = fitz.open(file_path)
-    except Exception as exc:  # PyMuPDF raises its own generic exceptions
+    except Exception as exc:  
         logger.error("Failed to open PDF '%s': %s", file_path.name, exc)
         raise PDFLoadError(f"Could not open '{file_path.name}'. It may be corrupted.") from exc
 
@@ -44,7 +28,7 @@ def load_pdf(file_path: Path) -> list[Document]:
     pages: list[Document] = []
     for page_number, page in enumerate(doc, start=1):
         text = page.get_text().strip()
-        if text:  # skip blank pages (common in scanned/converted PDFs)
+        if text:  
             pages.append(
                 Document(
                     page_content=text,
