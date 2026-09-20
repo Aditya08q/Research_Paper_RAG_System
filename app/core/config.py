@@ -17,10 +17,7 @@ class Settings(BaseSettings):
     chroma_collection_name: str = "research_papers"
     retrieval_top_k: int = 5
 
-    # --- Groq LLM --------------------------------------------------------
-    # Groq exposes an OpenAI-compatible chat completions endpoint, so we
-    # reuse the `openai` Python client pointed at their base_url instead of
-    # a Groq-specific SDK.
+  
     groq_api_key: str = ""
     groq_base_url: str = "https://api.groq.com/openai/v1"
     groq_model: str = "llama-3.3-70b-versatile"
