@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     groq_temperature: float = 0.2
     groq_max_tokens: int = 1024
 
-    # --- Server ----------------------------------------------------------------
+    
     upload_max_size_mb: int = 20
 
     class Config:
