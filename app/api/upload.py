@@ -47,3 +47,4 @@ async def upload_pdf(file: UploadFile = File(...)) -> UploadResponse:
         pages_extracted=len(pages),
         chunks_created=len(chunks),
     
+    )
