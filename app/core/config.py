@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     chunk_size: int = 500
     chunk_overlap: int = 100
 
-    # --- Embeddings ----------------------------------------------------------
+    
     embedding_model_name: str = "BAAI/bge-small-en-v1.5"
 
     # --- Vector store ----------------------------------------------------------
