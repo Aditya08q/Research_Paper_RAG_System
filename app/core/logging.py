@@ -26,12 +26,6 @@ def _configure_root_logger() -> None:
 
 
 def get_logger(name: str) -> logging.Logger:
-    """
-    Return a configured logger for the given module name.
-
-    Usage:
-        logger = get_logger(__name__)
-        logger.info("Chunk created: %s chars", len(chunk))
-    """
+    
     _configure_root_logger()
     return logging.getLogger(name)
