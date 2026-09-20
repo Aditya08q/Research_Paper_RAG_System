@@ -1,15 +1,5 @@
-"""
-Application configuration.
-
-All tunable values live here so no other module hardcodes a "magic number" —
-this satisfies the project's `avoid_magic_numbers` coding standard and gives
-a single place to tweak behavior (e.g. chunk size, top_k) while learning.
-"""
-
 from pydantic_settings import BaseSettings
 from pathlib import Path
-
-
 class Settings(BaseSettings):
     """
     Typed application settings, loaded from environment variables (or a .env
