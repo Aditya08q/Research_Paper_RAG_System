@@ -11,7 +11,6 @@ class Settings(BaseSettings):
     pdf_storage_dir: Path = base_dir / "data" / "pdfs"
     chroma_persist_dir: Path = base_dir / "data" / "chroma_db"
 
-    # --- Chunking ------------------------------------------------------------
     chunk_size: int = 500
     chunk_overlap: int = 100
 
