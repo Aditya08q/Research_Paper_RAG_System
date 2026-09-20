@@ -12,7 +12,6 @@ def chunk_documents(pages: list[Document]) -> list[Document]:
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=settings.chunk_size,
         chunk_overlap=settings.chunk_overlap,
-        # Try paragraph, then line, then sentence, then word, then character.
         separators=["\n\n", "\n", ". ", " ", ""],
     )
 
