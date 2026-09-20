@@ -35,7 +35,6 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-# Ensure required directories exist at import time so services never have to
-# check for this themselves.
+
 settings.pdf_storage_dir.mkdir(parents=True, exist_ok=True)
 settings.chroma_persist_dir.mkdir(parents=True, exist_ok=True)
