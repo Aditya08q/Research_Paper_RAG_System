@@ -1,13 +1,3 @@
-"""
-Chunking service.
-
-Design choice: RecursiveCharacterTextSplitter tries to split on paragraph
-breaks first, then sentences, then words — only falling back to a hard
-character cut as a last resort. This keeps chunks semantically coherent
-instead of slicing mid-sentence, which matters a lot for embedding quality:
-a chunk that ends mid-thought produces a noisier, less useful vector.
-"""
-
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
