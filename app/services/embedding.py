@@ -1,13 +1,3 @@
-"""
-Embedding service.
-
-Design choice: BAAI/bge-small-en-v1.5 is a small, CPU-friendly embedding
-model that still performs well on retrieval benchmarks. Using LangChain's
-HuggingFaceEmbeddings wrapper means the same object can be passed directly
-into Chroma later — Chroma calls `.embed_documents()` and `.embed_query()`
-on it automatically, so we never manually juggle raw vectors.
-"""
-
 from functools import lru_cache
 
 from langchain_huggingface import HuggingFaceEmbeddings
