@@ -1,11 +1,3 @@
-"""
-Request schemas for the API layer.
-
-Pydantic validates incoming data before it ever reaches business logic —
-e.g. an empty question string is rejected here rather than deep inside the
-RAG pipeline.
-"""
-
 from pydantic import BaseModel, Field
 
 
