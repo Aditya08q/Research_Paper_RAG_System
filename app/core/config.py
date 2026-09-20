@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     file) with sensible defaults for local development.
     """
 
-    # --- Paths -------------------------------------------------------------
+    
     base_dir: Path = Path(__file__).resolve().parent.parent.parent
     pdf_storage_dir: Path = base_dir / "data" / "pdfs"
     chroma_persist_dir: Path = base_dir / "data" / "chroma_db"
