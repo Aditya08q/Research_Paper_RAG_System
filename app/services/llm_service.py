@@ -1,14 +1,3 @@
-"""
-LLM service — encapsulates Groq behind a simple, swappable interface.
-
-Design choice: Groq publishes an OpenAI-compatible chat completions API, so
-rather than pulling in a Groq-specific SDK we reuse the standard `openai`
-Python client and just point it at Groq's base_url. This is the same
-pattern you'd use to swap in any other OpenAI-compatible provider later —
-only this class needs to change, nothing upstream in rag_pipeline.py cares
-which provider is behind it.
-"""
-
 import time
 
 from openai import OpenAI
