@@ -17,7 +17,6 @@ class Settings(BaseSettings):
     
     embedding_model_name: str = "BAAI/bge-small-en-v1.5"
 
-    # --- Vector store ----------------------------------------------------------
     chroma_collection_name: str = "research_papers"
     retrieval_top_k: int = 5
 
