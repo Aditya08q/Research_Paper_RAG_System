@@ -1,16 +1,6 @@
-"""
-PDF loading and text extraction.
-
-Design choice: we extract page-by-page (not the whole document as one blob)
-because we want to preserve page numbers as metadata. That metadata later
-flows all the way through to the citation the user sees — "this answer came
-from page 4 of paper.pdf" — which would be impossible if we flattened all
-pages into a single string up front.
-"""
-
 from pathlib import Path
 
-import fitz  # PyMuPDF
+import fitz 
 from langchain_core.documents import Document
 
 from app.core.logging import get_logger
@@ -19,7 +9,7 @@ logger = get_logger(__name__)
 
 
 class PDFLoadError(Exception):
-    """Raised when a PDF cannot be opened or contains no extractable text."""
+   
 
 
 def load_pdf(file_path: Path) -> list[Document]:
