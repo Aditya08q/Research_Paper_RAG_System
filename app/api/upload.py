@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException, UploadFile, File
-
 from app.core.config import settings
 from app.core.logging import get_logger
 from app.models.response import UploadResponse
@@ -47,4 +46,4 @@ async def upload_pdf(file: UploadFile = File(...)) -> UploadResponse:
         filename=file.filename,
         pages_extracted=len(pages),
         chunks_created=len(chunks),
-    )
+    
