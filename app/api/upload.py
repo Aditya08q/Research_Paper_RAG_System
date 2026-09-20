@@ -1,8 +1,3 @@
-"""
-Upload endpoint — accepts a PDF, runs it through the ingestion flow
-(extract → chunk → embed → store), and confirms what was indexed.
-"""
-
 from fastapi import APIRouter, HTTPException, UploadFile, File
 
 from app.core.config import settings
