@@ -9,17 +9,14 @@ logger = get_logger(__name__)
 
 
 class LLMServiceError(Exception):
-    """Raised when the Groq API call fails or returns an unusable response."""
 
-
-class LLMService:
-    """Thin wrapper around the Groq chat completions endpoint."""
+class LLMService: 
 
     def __init__(self) -> None:
         if not settings.groq_api_key:
             logger.error("GROQ_API_KEY is not set")
             raise LLMServiceError(
-                "Groq API key is missing. Set GROQ_API_KEY in your .env file."
+                "Groq API key is missing. Set GROQ_API_KEY"
             )
         self._client = OpenAI(
             api_key=settings.groq_api_key,
@@ -27,20 +24,7 @@ class LLMService:
         )
 
     def generate(self, prompt: str) -> str:
-        """
-        Send a fully-constructed prompt to Groq and return its text response.
-
-        Args:
-            prompt: The complete prompt (context + question), already built
-                by rag_pipeline.py using the PromptTemplate.
-
-        Returns:
-            The model's answer as plain text.
-
-        Raises:
-            LLMServiceError: if the API call fails for any reason (network,
-                auth, rate limit, malformed response).
-        """
+        
         start = time.monotonic()
         try:
             response = self._client.chat.completions.create(
