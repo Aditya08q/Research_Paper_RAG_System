@@ -32,10 +32,7 @@ class Settings(BaseSettings):
         env_file_encoding = "utf-8"
 
 
-# Single shared instance — imported everywhere instead of re-instantiating
-# Settings(), which keeps configuration centralized (avoid_global_variables
-# is respected because this is an explicit, typed singleton, not a loose
-# module-level dict).
+
 settings = Settings()
 
 # Ensure required directories exist at import time so services never have to
