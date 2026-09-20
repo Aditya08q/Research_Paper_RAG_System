@@ -10,13 +10,6 @@ logger = get_logger(__name__)
 
 @lru_cache(maxsize=1)
 def get_embedding_model() -> HuggingFaceEmbeddings:
-    """
-    Load and cache the embedding model.
-
-    The model is loaded once per process (via lru_cache) because loading it
-    from disk/HuggingFace hub on every request would be slow and wasteful —
-    the weights don't change between calls.
-    """
     logger.info("Loading embedding model: %s", settings.embedding_model_name)
     model = HuggingFaceEmbeddings(
         model_name=settings.embedding_model_name,
