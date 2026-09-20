@@ -16,7 +16,6 @@ class SourceCitation(BaseModel):
 
 
 class ChatResponse(BaseModel):
-    """Returned from POST /chat — the answer plus the sources that support it."""
 
     answer: str
     sources: list[SourceCitation]
