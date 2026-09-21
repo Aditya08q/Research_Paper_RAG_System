@@ -12,10 +12,7 @@ router = APIRouter()
 
 @router.post("/upload", response_model=UploadResponse)
 async def upload_pdf(file: UploadFile = File(...)) -> UploadResponse:
-    """
-    Accept a single PDF file, index it into the vector store, and return a
-    summary of what was extracted.
-    """
+
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="Only PDF files are accepted.")
 
