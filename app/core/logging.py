@@ -28,4 +28,4 @@ def _configure_root_logger() -> None:
 def get_logger(name: str) -> logging.Logger:
     
     _configure_root_logger()
-    return logging.getLogger(name)
+    return logging.getLogger(name
