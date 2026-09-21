@@ -6,7 +6,6 @@ _CONFIGURED = False
 
 
 def _configure_root_logger() -> None:
-    """Configure the root logger exactly once for the whole application."""
     global _CONFIGURED
     if _CONFIGURED:
         return
