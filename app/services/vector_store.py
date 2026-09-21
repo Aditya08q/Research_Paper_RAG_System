@@ -1,15 +1,3 @@
-"""
-Vector store service.
-
-Design choice: LangChain's Chroma wrapper is used instead of the raw
-chromadb client so this module can expose `.as_retriever()` — a standard
-LangChain interface that plugs directly into a RunnableSequence in
-rag_pipeline.py without any glue code.
-
-The store is persisted to disk (data/chroma_db) so uploaded papers survive
-a server restart instead of needing to be re-indexed every time.
-"""
-
 from functools import lru_cache
 
 from langchain_chroma import Chroma
