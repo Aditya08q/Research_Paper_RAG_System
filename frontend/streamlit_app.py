@@ -34,7 +34,7 @@ with st.sidebar:
                     detail = exc.response.text or f"Server returned {exc.response.status_code} with no body — check the uvicorn terminal for a traceback."
                 st.error(f"Upload failed: {detail}")
 
-# chat interface 
+
 for entry in st.session_state.chat_history:
     with st.chat_message("user"):
         st.write(entry["question"])
