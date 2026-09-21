@@ -11,8 +11,6 @@ logger = get_logger(__name__)
 
 
 class VectorStoreError(Exception):
-    """Raised when adding to or querying the vector store fails."""
-
 
 @lru_cache(maxsize=1)
 def get_vector_store() -> Chroma:
