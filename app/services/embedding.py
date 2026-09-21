@@ -13,8 +13,6 @@ def get_embedding_model() -> HuggingFaceEmbeddings:
     logger.info("Loading embedding model: %s", settings.embedding_model_name)
     model = HuggingFaceEmbeddings(
         model_name=settings.embedding_model_name,
-        # bge models are trained to work well with normalized embeddings,
-        # which makes cosine similarity comparisons more reliable.
         encode_kwargs={"normalize_embeddings": True},
     )
     logger.info("Embedding model loaded successfully")
