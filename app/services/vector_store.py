@@ -41,8 +41,7 @@ def similarity_search(query: str, top_k: int | None = None) -> list[tuple[Docume
 
     try:
         store = get_vector_store()
-        # `with_relevance_scores` returns cosine similarity in [0, 1] rather
-        # than raw distance, which is more intuitive to show to a user.
+      
         results = store.similarity_search_with_relevance_scores(query, k=k)
         logger.info("Retrieved %d chunks for query (top_k=%d)", len(results), k)
         return results
