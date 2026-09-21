@@ -14,11 +14,6 @@ class VectorStoreError(Exception):
 
 @lru_cache(maxsize=1)
 def get_vector_store() -> Chroma:
-    """
-    Load (or create, if this is the first run) the persistent Chroma
-    collection. Cached so every request reuses the same connection instead
-    of re-opening the on-disk database each time.
-    """
     logger.info("Opening Chroma collection '%s'", settings.chroma_collection_name)
     return Chroma(
         collection_name=settings.chroma_collection_name,
