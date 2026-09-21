@@ -1,9 +1,3 @@
-"""
-Application entrypoint.
-
-Run with: uvicorn app.main:app --reload
-"""
-
 from fastapi import FastAPI
 
 from app.api import chat, upload
