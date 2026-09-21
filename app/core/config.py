@@ -33,7 +33,7 @@ class Settings(BaseSettings):
 
 
 
-settings = Settings(
+settings = Settings()
 
 
 settings.pdf_storage_dir.mkdir(parents=True, exist_ok=True)
