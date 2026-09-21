@@ -1,14 +1,3 @@
-"""
-RAG pipeline — the orchestration layer that ties retrieval, prompt
-construction, and the LLM together into a single `ask()` call.
-
-Design choice: this module deliberately does NOT use LangGraph (per the
-project's `use_langgraph: false` constraint). Instead it uses a plain
-LangChain PromptTemplate + a manual call to LLMService — simple enough to
-read top-to-bottom in one pass, which suits the educational goal better
-than an abstracted graph would.
-"""
-
 from pathlib import Path
 
 from langchain_core.prompts import PromptTemplate
@@ -25,21 +14,14 @@ _PROMPT_PATH = Path(__file__).resolve().parent.parent / "prompts" / "rag_prompt.
 
 
 class RAGPipelineError(Exception):
-    """Raised when any stage of the RAG pipeline fails."""
 
 
 def _load_prompt_template() -> PromptTemplate:
-    """Load the prompt template text and wrap it as a LangChain PromptTemplate."""
     template_text = _PROMPT_PATH.read_text(encoding="utf-8")
     return PromptTemplate(template=template_text, input_variables=["context", "question"])
 
 
 def _format_context(results: list[tuple]) -> str:
-    """
-    Turn retrieved (Document, score) tuples into a single context string,
-    tagging each chunk with its source so the LLM can (and is instructed to)
-    mention where information came from.
-    """
     parts = []
     for doc, _score in results:
         source = doc.metadata.get("source", "unknown")
@@ -49,19 +31,6 @@ def _format_context(results: list[tuple]) -> str:
 
 
 def ask(question: str) -> ChatResponse:
-    """
-    Run the full RAG query flow: retrieve relevant chunks, build a grounded
-    prompt, call Grok, and return the answer with source citations.
-
-    Args:
-        question: The user's natural-language question.
-
-    Returns:
-        A ChatResponse containing the answer and the chunks used as evidence.
-
-    Raises:
-        RAGPipelineError: if retrieval or generation fails at any stage.
-    """
     try:
         results = similarity_search(question)
     except VectorStoreError as exc:
