@@ -10,7 +10,6 @@ st.caption("Upload a research paper, then ask questions about it — answers are
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-#  PDF upload
 with st.sidebar:
     st.header("Upload a paper")
     uploaded_file = st.file_uploader("Choose a PDF", type=["pdf"])
