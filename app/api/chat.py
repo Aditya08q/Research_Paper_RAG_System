@@ -12,7 +12,7 @@ router = APIRouter()
 @router.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest) -> ChatResponse:
     try:
-        return ask(request.question
+        return ask(request.question)
     except RAGPipelineError as exc:
         logger.error("RAG pipeline failed: %s", exc)
         raise HTTPException(status_code=500, detail=str(exc)) from exc
