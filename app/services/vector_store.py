@@ -37,19 +37,6 @@ def add_chunks(chunks: list[Document]) -> None:
 
 
 def similarity_search(query: str, top_k: int | None = None) -> list[tuple[Document, float]]:
-    """
-    Retrieve the most semantically similar chunks to a query.
-
-    Args:
-        query: The user's natural-language question.
-        top_k: Number of chunks to retrieve. Defaults to settings.retrieval_top_k.
-
-    Returns:
-        A list of (Document, similarity_score) tuples, most similar first.
-
-    Raises:
-        VectorStoreError: if the similarity search fails.
-    """
     k = top_k or settings.retrieval_top_k
 
     try:
