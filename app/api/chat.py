@@ -11,7 +11,6 @@ router = APIRouter()
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest) -> ChatResponse:
-    """Answer a question using only the content of uploaded research papers."""
     try:
         return ask(request.question)
     except RAGPipelineError as exc:
