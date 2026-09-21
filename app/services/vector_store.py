@@ -23,17 +23,7 @@ def get_vector_store() -> Chroma:
 
 
 def add_chunks(chunks: list[Document]) -> None:
-    """
-    Embed and store a list of chunks in the vector database.
-
-    Args:
-        chunks: Document chunks, typically from `chunking.chunk_documents`.
-
-    Raises:
-        VectorStoreError: if embedding or storage fails (e.g. the embedding
-            model errors out, or the on-disk Chroma database can't be
-            written to).
-    """
+   
     if not chunks:
         return
 
